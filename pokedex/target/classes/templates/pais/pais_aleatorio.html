@@ -1,0 +1,29 @@
+<html data-theme="light">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title th:text="${pais.nome}">País do Mundo</title>
+</head>
+<body class="bg-base-200 p-8">
+    <h1 class="text-5xl mb-4" th:text="${pais.nome}">{pais.nome}</h1>
+    <div class="mt-2 mb-2">
+        <span><a href="/">Início</a></span>
+    </div>
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-6 bg-base-200 p-6">
+
+        <!-- Bandeira -->
+        <div class="flex-shrink-0">
+            <img class="rounded-lg shadow-md w-80 max-w-full" th:src="${pais.bandeiraUrl}" alt="Bandeira de [[${pais.nome}]]">
+        </div>
+
+        <!-- Informações -->
+        <div class="flex flex-col text-lg">
+            <p><span class="font-semibold">Nome:</span> <span th:text="${pais.nome}">{pais.nome}</span></p>
+            <p><span class="font-semibold">Capital:</span> <span th:text="${pais.capital}">{pais.capital}</span></p>
+            <p><span class="font-semibold">Continente:</span> <span th:text="${pais.continente}">{pais.continente}</span></p>
+        </div>
+
+    </div>
+
+</body>
+</html>
