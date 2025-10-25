@@ -1,0 +1,43 @@
+<html data-theme="light">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Pokedex</title>
+</head>
+<body class="bg-base-200 p-8">
+    <h1 class="text-5xl mb-4">Pokemons do Mundo</h1>
+    <div class="mt-2 mb-2">
+        <span><a href="/">Início</a></span>
+    </div>
+    <div th:if="${tipos.isEmpty}" class="flex flex-col items-center justify-center width-full">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/BlankMap-World.svg" alt="Empty" width="400">
+        <p class="mt-4 text-2xl">Não há pokemons cadastrados</p>
+    </div>
+    <div th:unless="${tipos.isEmpty}" th:each="c : ${tipos}">
+        <h1 th:text="${c.nome}">{c.nome}</h1>
+        <br>
+    <div th:unless="${c.pokemons.isEmpty}" class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+        <table class="table">
+            <thead>
+                <tr>
+                <td>ID</td>
+                <td>Foto</td>
+                <td>Nome</td>
+                <td>Tipo</td>
+                <td>Estagio</td>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p : ${c.pokemons}" class="hover:bg-base-300">
+                <td th:text="${p.id}">{p.id}</td>
+                <td><img th:src="${p.fotoUrl}" width="80" alt="Foto do Pokémon"></td>
+                <td th:text="${p.nome}">{p.nome}</td>
+                <td th:text="${p.tipo}">{p.tipo}</td>
+                <td th:text="${p.estagio}">{p.estagio}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</body>
+</html>

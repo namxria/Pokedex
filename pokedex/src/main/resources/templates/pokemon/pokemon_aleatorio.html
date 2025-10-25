@@ -1,0 +1,29 @@
+<html data-theme="light">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title th:text="${pokemon.nome}">Pokedex</title>
+</head>
+<body class="bg-base-200 p-8">
+    <h1 class="text-5xl mb-4" th:text="${pokemon.nome}">{pokemon.nome}</h1>
+    <div class="mt-2 mb-2">
+        <span><a href="/">Início</a></span>
+    </div>
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-6 bg-base-200 p-6">
+
+        <!-- Bandeira -->
+        <div class="flex-shrink-0">
+            <img class="rounded-lg shadow-md w-80 max-w-full" th:src="${pokemon.fotoUrl}" alt="Bandeira de [[${pokemon.nome}]]">
+        </div>
+
+        <!-- Informações -->
+        <div class="flex flex-col text-lg">
+            <p><span class="font-semibold">Nome:</span> <span th:text="${pokemon.nome}">{pokemon.nome}</span></p>
+            <p><span class="font-semibold">Tipo:</span> <span th:text="${pokemon.tipo}">{pokemon.tipo}</span></p>
+            <p><span class="font-semibold">Estagio:</span> <span th:text="${pokemon.estagio}">{pokemon.estagio}</span></p>
+        </div>
+
+    </div>
+
+</body>
+</html>

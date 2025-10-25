@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>br.univille.poo2</groupId>
-    <artifactId>paises</artifactId>
+    <artifactId>pokemons</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>paises</name>
-    <description>paises</description>
+    <name>pokemons</name>
+    <description>pokemons</description>
     <url/>
     <licenses>
         <license/>

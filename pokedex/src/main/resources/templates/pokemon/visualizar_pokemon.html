@@ -1,0 +1,38 @@
+<html data-theme="light">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title th:text="${pokemon.nome}">Pokedex</title>
+</head>
+<body class="bg-base-200 p-8">
+    <h1 class="text-5xl mb-4" th:text="${pokemon.nome}">{pokemon.nome}</h1>
+    <div class="mt-2 mb-2 flex items-center gap-2 text-sm">
+        <span><a href="/">Início</a></span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+        <span><a href="/pokemons2">Pokemons</a></span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+        <span th:text="${pokemon.nome}">{pokemon.nome}</span>
+        <a th:href="@{/pokemons2/editar/{id}(id=${pokemon.id})}" class="btn btn-primary">Editar Pokemon</a>
+    </div>
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-6 bg-base-200 p-6">
+
+        <!-- Bandeira -->
+        <div class="flex-shrink-0">
+            <img class="rounded-lg shadow-md w-80 max-w-full" th:src="${pokemon.fotoUrl}" alt="Foto de [[${pokemon.nome}]]">
+        </div>
+
+        <!-- Informações -->
+        <div class="flex flex-col text-lg">
+            <p><span class="font-semibold">Nome:</span> <span th:text="${pokemon.nome}">{pokemon.nome}</span></p>
+            <p><span class="font-semibold">Tipo:</span> <span th:text="${pokemon.tipo}">{pokemon.tipo}</span></p>
+            <p><span class="font-semibold">Estagio:</span> <span th:text="${pokemon.estagio}">{pokemon.estagio}</span></p>
+        </div>
+
+    </div>
+
+</body>
+</html>

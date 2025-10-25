@@ -13,9 +13,9 @@ import java.util.List;
 public interface PokemonRepository extends JpaRepository<Pokemon,Long> {
 
 
-    @Query(value = "select distinct continente from pais order by TRANSLATE(continente, 'ÁÉÍÓÚÂÊÎÔÛÃÕÀÈÌÒÙÇáéíóúâêîôûãõàèìòùç', 'AEIOUAEIOUAEOUCaeiouaeiouaoaeiouc')", nativeQuery = true)
-    List<String> findAllContinentes();
+    @Query(value = "select distinct tipo from pokemon order by TRANSLATE(tipo, 'ÁÉÍÓÚÂÊÎÔÛÃÕÀÈÌÒÙÇáéíóúâêîôûãõàèìòùç', 'AEIOUAEIOUAEOUCaeiouaeiouaoaeiouc')", nativeQuery = true)
+    List<String> findAllTipos();
 
-    List<Pokemon> findAllByContinenteOrderByNome(String continente);
+    List<Pokemon> findAllByTipoOrderByNome(String tipo);
 
 }

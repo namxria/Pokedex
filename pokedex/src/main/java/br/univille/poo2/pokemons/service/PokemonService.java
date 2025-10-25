@@ -34,63 +34,63 @@ public class PokemonService {
         pokemon.setNome("Bubassauro");
         pokemon.setTipo("Planta");
         pokemon.setEstagio("Primeiro");
-        pokemon.setFotoUrl("https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg");
+        pokemon.setFotoUrl("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png");
         pokemonRepository.save(pokemon);
 
         pokemon = new Pokemon();
         pokemon.setNome("Ivyssauro");
         pokemon.setTipo("Planta-Venenoso");
         pokemon.setEstagio("Segundo");
-        pokemon.setFotoUrl("https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg");
+        pokemon.setFotoUrl("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/002.png");
         pokemonRepository.save(pokemon);
 
         pokemon = new Pokemon();
         pokemon.setNome("Venussauro");
         pokemon.setTipo("Planta-Venenoso");
         pokemon.setEstagio("Terceiro");
-        pokemon.setFotoUrl("https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg");
+        pokemon.setFotoUrl("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/003.png");
         pokemonRepository.save(pokemon);
 
         pokemon = new Pokemon();
         pokemon.setNome("Squirtle");
         pokemon.setTipo("Água");
         pokemon.setEstagio("Primeiro");
-        pokemon.setFotoUrl("https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg");
+        pokemon.setFotoUrl("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/007.png");
         pokemonRepository.save(pokemon);
 
         pokemon = new Pokemon();
         pokemon.setNome("Wartortle");
         pokemon.setTipo("Água");
         pokemon.setEstagio("Segundo");
-        pokemon.setFotoUrl("https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg");
+        pokemon.setFotoUrl("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/008.png");
         pokemonRepository.save(pokemon);
 
         pokemon = new Pokemon();
         pokemon.setNome("Blastoise");
         pokemon.setTipo("Água");
         pokemon.setEstagio("Terceiro");
-        pokemon.setFotoUrl("https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg");
+        pokemon.setFotoUrl("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/009.png");
         pokemonRepository.save(pokemon);
 
         pokemon = new Pokemon();
         pokemon.setNome("Carmander");
         pokemon.setTipo("Fogo");
         pokemon.setEstagio("Primeiro");
-        pokemon.setFotoUrl("https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg");
+        pokemon.setFotoUrl("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png");
         pokemonRepository.save(pokemon);
 
         pokemon = new Pokemon();
         pokemon.setNome("Charmeleon");
         pokemon.setTipo("Fogo");
         pokemon.setEstagio("Segundo");
-        pokemon.setFotoUrl("https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg");
+        pokemon.setFotoUrl("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/005.png");
         pokemonRepository.save(pokemon);
 
         pokemon = new Pokemon();
         pokemon.setNome("Charizard");
         pokemon.setTipo("Fogo-Voador");
         pokemon.setEstagio("Terceiro");
-        pokemon.setFotoUrl("https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg");
+        pokemon.setFotoUrl("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006.png");
         pokemonRepository.save(pokemon);
 
         obterTodosAgrupadosPorTipo();
@@ -112,14 +112,14 @@ public class PokemonService {
     }
 
 
-    public List<TipoDTO> obterTodosAgrupadosPorContinente(){
+    public List<TipoDTO> obterTodosAgrupadosPorTipo(){
         // List<String>
         var lista = new ArrayList<TipoDTO>();
         // 1 consulta
-        var continentes = pokemonRepository.findAllContinentes();
+        var tipos = pokemonRepository.findAllTipos();
         // 7 consultas
-        for(var c : continentes){
-            var pokemon = pokemonRepository.findAllByContinenteOrderByNome(c);
+        for(var c : tipos){
+            var pokemon = pokemonRepository.findAllByTipoOrderByNome(c);
             lista.add(new TipoDTO(c,pokemon));
         }
         return lista;
@@ -130,64 +130,57 @@ public class PokemonService {
         if(Strings.isBlank(request.nome())){
             builder.append("Favor informar o nome.").append("\n");
         }
-        if(Strings.isBlank(request.capital())){
-            builder.append("Favor informar a capital.").append("\n");
+        if(Strings.isBlank(request.tipo())){
+            builder.append("Favor informar o tipo.").append("\n");
         }
-        if(Strings.isBlank(request.continente())){
-            builder.append("Favor informar o continente.").append("\n");
+        if(Strings.isBlank(request.estagio())){
+            builder.append("Favor informar o estagio.").append("\n");
         }
-        if(Strings.isBlank(request.idioma())){
-            builder.append("Favor informar o idioma.").append("\n");
-        }
-        if(Strings.isBlank(request.bandeiraUrl())){
-            builder.append("Favor informar a url da bandeira.").append("\n");
+        if(Strings.isBlank(request.fotoURL())){
+            builder.append("Favor informar a url da foto.").append("\n");
         }
         if (!builder.isEmpty()){
             throw new RuntimeException(builder.toString());
         }
-        var pokemon = new pokemon();
+        var pokemon = new Pokemon();
         pokemon.setNome(request.nome());
-        pokemon.setCapital(request.capital());
-        pokemon.setContinente(request.continente());
-        pokemon.setBandeiraUrl(request.bandeiraUrl());
-        pokemon.setIdioma(request.idioma());
+        pokemon.setTipo(request.tipo());
+        pokemon.setEstagio(request.estagio());
+        pokemon.setFotoUrl(request.fotoURL());
         return pokemonRepository.save(pokemon);
     }
 
-    public Optional<pokemon> obterPeloId(Long id) {
+    public Optional<Pokemon> obterPeloId(Long id) {
         return pokemonRepository.findById(id);
     }
 
-    public pokemon editar(EditarpokemonRequest request) {
+    public Pokemon editar(EditarPokemonRequest request) {
         StringBuilder builder = new StringBuilder();
         if(Strings.isBlank(request.nome())){
             builder.append("Favor informar o nome.").append("\n");
         }
-        if(Strings.isBlank(request.capital())){
-            builder.append("Favor informar a capital.").append("\n");
+        if(Strings.isBlank(request.tipo())){
+            builder.append("Favor informar o tipo.").append("\n");
         }
-        if(Strings.isBlank(request.continente())){
-            builder.append("Favor informar o continente.").append("\n");
+        if(Strings.isBlank(request.estagio())){
+            builder.append("Favor informar o estagio.").append("\n");
         }
-        if(Strings.isBlank(request.idioma())){
-            builder.append("Favor informar o idioma.").append("\n");
-        }
-        if(Strings.isBlank(request.bandeiraUrl())){
-            builder.append("Favor informar a url da bandeira.").append("\n");
+        if(Strings.isBlank(request.fotoURL())){
+            builder.append("Favor informar a url da foto.").append("\n");
         }
         if (!builder.isEmpty()){
             throw new RuntimeException(builder.toString());
         }
         var old = pokemonRepository.findById(request.id()).orElseThrow();
         old.setNome(request.nome());
-        old.setCapital(request.capital());
-        old.setContinente(request.continente());
-        old.setBandeiraUrl(request.bandeiraUrl());
-        old.setIdioma(request.idioma());
+        old.setTipo(request.tipo());
+        old.setEstagio(request.estagio());
+        old.setFotoUrl(request.fotoURL());
         return pokemonRepository.save(old);
     }
 
     public void deletarPeloId(Long id) {
         pokemonRepository.deleteById(id);
     }
+
 }

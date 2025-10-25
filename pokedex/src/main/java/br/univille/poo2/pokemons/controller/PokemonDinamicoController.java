@@ -30,12 +30,12 @@ public class PokemonDinamicoController {
         this.pokemonService = pokemonService;
     }
 
-    @GetMapping("/agrupado-por-continentes")
-    public ModelAndView agrupadoPorContinente() {
-        var mv = new ModelAndView("pokemon/agrupado_por_continentes");
-        var lista = pokemonService.obterTodosAgrupadosPorContinente();
+    @GetMapping("/agrupado-por-tipos")
+    public ModelAndView agrupadoPorTipo() {
+        var mv = new ModelAndView("pokemon/agrupado_por_tipos");
+        var lista = pokemonService.obterTodosAgrupadosPorTipo();
         // Adiciona a lista de pokemons na view com o nome 'pokemons'
-        mv.addObject("continentes", lista);
+        mv.addObject("tipos", lista);
         return mv;
     }
 
@@ -69,7 +69,7 @@ public class PokemonDinamicoController {
     @GetMapping("/criar")
     public ModelAndView criar() {
         var mv = new ModelAndView("pokemon/novo_pokemon");
-        mv.addObject("criarPokemonRequest", new CriarPokemonRequest(null, null, null, null, null));
+        mv.addObject("criarPokemonRequest", new CriarPokemonRequest(null, null, null, null));
         return mv;
     }
 
@@ -95,7 +95,7 @@ public class PokemonDinamicoController {
         }
         var mv = new ModelAndView("pokemon/editar_pokemon");
         var pokemon = optional.get();
-        var request = new EditarPokemonRequest(pokemon.getId(), pokemon.getNome(), pokemon.getCapital(), pokemon.getContinente(), pokemon.getBandeiraUrl(), pokemon.getIdioma());
+        var request = new EditarPokemonRequest(pokemon.getId(), pokemon.getNome(), pokemon.getTipo(), pokemon.getEstagio(), pokemon.getEstagio());
         mv.addObject("editarPokemonRequest", optional.get());
         return mv;
     }
@@ -116,8 +116,8 @@ public class PokemonDinamicoController {
     @GetMapping
     @RequestMapping("/aleatorio")
     public ModelAndView aleatorio() {
-        var optional = pokemonService.obterUmPokemonAleatoriamente();
-        // Caso não exista países cadastrados, retorna uma mensagem de erro
+        var optional = pokemonService.obterUmpokemonAleatoriamente();
+        // Caso não exista pokemons cadastrados, retorna uma mensagem de erro
         if(optional.isEmpty()){
             return new ModelAndView("pokemon/nao_ha_pokemons");
         }
