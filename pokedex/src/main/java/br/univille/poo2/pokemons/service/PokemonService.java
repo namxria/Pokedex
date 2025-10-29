@@ -31,7 +31,7 @@ public class PokemonService {
 
     public void adicionarPokemons(){
         var pokemon = new Pokemon();
-        pokemon.setNome("Bubassauro");
+        pokemon.setNome("Bulbassauro");
         pokemon.setTipo("Planta");
         pokemon.setEstagio("Primeiro");
         pokemon.setFotoUrl("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png");
@@ -136,7 +136,7 @@ public class PokemonService {
         if(Strings.isBlank(request.estagio())){
             builder.append("Favor informar o estagio.").append("\n");
         }
-        if(Strings.isBlank(request.fotoURL())){
+        if(Strings.isBlank(request.fotoUrl())){
             builder.append("Favor informar a url da foto.").append("\n");
         }
         if (!builder.isEmpty()){
@@ -146,7 +146,7 @@ public class PokemonService {
         pokemon.setNome(request.nome());
         pokemon.setTipo(request.tipo());
         pokemon.setEstagio(request.estagio());
-        pokemon.setFotoUrl(request.fotoURL());
+        pokemon.setFotoUrl(request.fotoUrl());
         return pokemonRepository.save(pokemon);
     }
 
@@ -165,7 +165,7 @@ public class PokemonService {
         if(Strings.isBlank(request.estagio())){
             builder.append("Favor informar o estagio.").append("\n");
         }
-        if(Strings.isBlank(request.fotoURL())){
+        if(Strings.isBlank(request.fotoUrl())){
             builder.append("Favor informar a url da foto.").append("\n");
         }
         if (!builder.isEmpty()){
@@ -175,7 +175,7 @@ public class PokemonService {
         old.setNome(request.nome());
         old.setTipo(request.tipo());
         old.setEstagio(request.estagio());
-        old.setFotoUrl(request.fotoURL());
+        old.setFotoUrl(request.fotoUrl());
         return pokemonRepository.save(old);
     }
 

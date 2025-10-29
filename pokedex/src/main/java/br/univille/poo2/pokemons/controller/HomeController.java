@@ -30,7 +30,7 @@ public class HomeController {
     public ModelAndView criarPokemons() {
         pokemonService.adicionarPokemons();
         // Redireciona para a url raiz
-        return new ModelAndView("redirect:/Pokemons2");
+        return new ModelAndView("redirect:/pokemons2");
     }
 
     @GetMapping

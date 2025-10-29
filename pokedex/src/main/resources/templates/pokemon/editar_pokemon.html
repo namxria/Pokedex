@@ -2,14 +2,14 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Pokedex</title>
+    <title>Pokédex</title>
 </head>
 <body class="bg-base-200 p-8">
 
 <h1 class="text-5xl mb-4">Editar Pokemon</h1>
 
 <div class="mt-2 mb-2 flex items-center gap-2 text-sm">
-    <a href="/" class="link">Início</a>
+    <span><a class="btn btn-primary" href="/" role="button">Início</a></span>
     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
     </svg>
@@ -51,7 +51,7 @@
     <div class="pt-4 flex">
         <a href="/pokemons2" class="btn btn-ghost">Cancelar</a>
         <div class="flex gap-3">
-            <button type="button" class="btn btn-error" onclick="document.getElementById('dialog-delete').showModal()">Excluir</button>
+            <button type="button" class="btn btn-primary" onclick="document.getElementById('dialog-delete').showModal()">Excluir</button>
             <button type="submit" class="btn btn-primary">Salvar Alterações</button>
         </div>
     </div>
@@ -69,7 +69,7 @@
             <!-- Form real de deleção -->
             <form th:action="@{/pokemons2/{id}(id=*{id})}" method="post">
                 <input type="hidden" name="_method" value="DELETE"/>
-                <button type="submit" class="btn btn-error">Sim, excluir</button>
+                <button type="submit" class="btn btn-primary">Sim, excluir</button>
             </form>
         </div>
     </div>

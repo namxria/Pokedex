@@ -2,12 +2,12 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title th:text="${pokemon.nome}">Pokedex</title>
+    <title th:text="${pokemon.nome}">Pokédex</title>
 </head>
 <body class="bg-base-200 p-8">
     <h1 class="text-5xl mb-4" th:text="${pokemon.nome}">{pokemon.nome}</h1>
     <div class="mt-2 mb-2 flex items-center gap-2 text-sm">
-        <span><a href="/">Início</a></span>
+        <span><a class="btn btn-primary" href="/" role="button">Início</a></span>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>

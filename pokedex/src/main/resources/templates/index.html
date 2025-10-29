@@ -1,17 +1,25 @@
 <html>
 <head>
-    <title>Pokedex</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Pokédex</title>
 </head>
-<body>
-<ul>
-    <li><a href="/pokemons"> Lista de Pokemons fixa</a></li>
-    <li><a href="/pokemons2">Lista de Pokemons dinâmica (com banco de dados)</a></li>
-    <li><a href="/pokemons2/aleatorio">Exibir um pokemon aleatoriamente</a></li>
-</ul>
-<p>Manipulação dos dados de pokemons</p>
-    <ul>
-        <li><a href="/criar-pokemons">Criar os pokemons no banco de dados</a></li>
-        <li><a href="/deletar-pokemons">Deletar todos os pokemons</a></li>
-    </ul>
+<body class="bg-base-200 p-8">
+    <h1 class="text-5xl mb-4">Pokédex!</h1>
+    <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+        <ul>
+            <li><a role="button" class="btn btn-ghost" href="/pokemons"> Lista de Pokemons fixa</a></li>
+            <li><a role="button" class="btn btn-ghost" href="/pokemons2">Lista de Pokemons dinâmica (com banco de dados)</a></li>
+            <li><a role="button" class="btn btn-ghost" href="/pokemons2/aleatorio">Exibir um pokemon aleatoriamente</a></li>
+        </ul>
+    </div>
+    <h3 class="text-3xl mb-4">Manipulação de dados de pokémons</h3>
+    <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+
+            <ul>
+                <li><a role="button" class="btn btn-ghost" href="/criar-pokemons">Criar os pokemons no banco de dados</a></li>
+                <li><a role="button" class="btn btn-ghost" href="/deletar-pokemons">Deletar todos os pokemons</a></li>
+            </ul>
+    </div>
 </body>
 </html>
